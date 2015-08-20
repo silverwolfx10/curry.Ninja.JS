@@ -10,6 +10,6 @@ Ninja.service('$add', ['$curry'], function ($curry) {
 });
 
 Ninja(['$add'], function ($add, _) {
-  ['bom dia', 'boa tarde', 'boa noite'].map(add(_, ' cleber.programmer'));
+  ['bom dia', 'boa tarde', 'boa noite'].map($add(_, ' cleber.programmer'));
 });
 ```
