@@ -54,6 +54,23 @@ Ninja.service('$curry', [], function (_) {
   }
   
   /**
+   * Cria um array sparse com um tamho determinado com seus
+   * respectivos valores undefined
+   *
+   * @private
+   * @method sparse
+   * @param {Number} n Tamaho do array
+   * @return {Array} Array sparse com valores undefined
+   * @example
+   *
+   *        sparse(3);
+   *
+   */
+  function sparse(n) {
+    return n ? Array(n).toString().split(',').map(function () { return _; }) : [];
+  }
+  
+  /**
    * Valida se algum dos argumnetos é um gap
    * 
    * @private
@@ -101,20 +118,20 @@ Ninja.service('$curry', [], function (_) {
      * @private
      * @method solve
      * @param {Array} parameters Array de argumentos da funcao construtora
-     * @returm {Array|Boolean|Date|Funcation|Null|Object|String|Undefined} Retorna a funcao curry ou o resultado da funcao construtora
+     * @returm {Array|Boolean|Date|Funcation|Null|Object|String|Undefined} Retorna a funcao curry ou o resultado da funcao
      * @example
      * 
      *        solve(mapper(template, iterator([].slice.call(arguments, 1))));
      * 
      */
     function solve(parameters) {
-      return validate(parameters) ? f.apply(f, parameters) : curry.bind(curry, parameters);
+      return validate(parameters) ? f.apply(f, parameters) : curry.bind(null, parameters);
     }
     
     /**
      * Na primeira chamado retorna a funcao curry passando um array sparse
      */
-    return curry.bind(curry, Array(f.length).join('.').split('.').map(function () { return _; }));
+    return curry.bind(null, sparse(f.length));
     
   };
   
