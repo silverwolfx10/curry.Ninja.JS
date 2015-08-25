@@ -1,0 +1,24 @@
+{
+  "name": "curry.Ninja.JS",
+  "version": "0.0.0",
+  "authors": [
+    "Cleber de Moraes Goncalves <cleber.programmer@hotmail.com>"
+  ],
+  "description": "Quebra uma funcao construtora dentro de uma funcao curry que pode ser chamado com os mesmos argumentos retornanto o mesmo tipo",
+  "main": "curry.js",
+  "keywords": [
+    "javascript"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Bibizzy/curry.Ninja.JS",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Ninja.JS": "*"
+  }
+}
