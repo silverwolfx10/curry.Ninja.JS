@@ -74,7 +74,7 @@ gulp.task('ninja-modules-auto-load', ['bower'], function () {
 
 });
 
-gulp.task('default', ['ninja-modules-auto-load'], function () {
+gulp.task('ninja-smoke-bomb', ['ninja-modules-auto-load'], function () {
 
   return gulp.src('./script.txt')
              .pipe(inject(gulp.src(['./dest/ninja.min.js']), {
