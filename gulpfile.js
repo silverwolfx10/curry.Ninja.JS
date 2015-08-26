@@ -81,7 +81,7 @@ gulp.task('default', ['ninja-modules-auto-load'], function () {
                 starttag: "javascript:(function () {",
                 endtag: "}).call({})",
                 transform: function (filePath, file) {
-                  return file.contents.toString('utf8')
+                  return file.contents.toString('utf8');
                 }
              }))
              .pipe(gulp.dest('./dest'));
