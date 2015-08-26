@@ -1,6 +1,7 @@
 var bower = require('bower');
 var concat = require('gulp-concat');
 var gulp = require('gulp');
+var inject = require('gulp-inject');
 var underscore = require('underscore');
 var underscoreStr = require('underscore.string');
 var uglify = require('gulp-uglify');
@@ -12,7 +13,7 @@ gulp.task('bower', function (cb) {
     });
 });
 
-gulp.task('ninja-modules-auto', ['bower'], function () {
+gulp.task('ninja-modules-auto-load', ['bower'], function () {
   
   var bowerDir = './bower_components';
   var bowerFile = require('./bower.json');
@@ -67,8 +68,22 @@ gulp.task('ninja-modules-auto', ['bower'], function () {
   });
 
   return gulp.src(mainFiles)
-             .pipe(concat('ninja.js'))
+             .pipe(concat('ninja.min.js'))
              .pipe(uglify())
-             .pipe(gulp.dest('./dist'));
+             .pipe(gulp.dest('./dest'));
 
+});
+
+gulp.task('default', ['ninja-modules-auto-load'], function () {
+
+  return gulp.src('./script.txt')
+             .pipe(inject(gulp.src(['./dest/ninja.min.js']), {
+                starttag: "javascript:(function () {",
+                endtag: "}).call({})",
+                transform: function (filePath, file) {
+                  return file.contents.toString('utf8')
+                }
+             }))
+             .pipe(gulp.dest('./dest'));
+  
 });

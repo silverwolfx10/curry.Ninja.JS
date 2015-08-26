@@ -18,7 +18,7 @@
  *        ['bom dia', 'boa tarde', 'boa noite'].map(add(undefined, ' cleber.programmer'));
  * 
  */
-Ninja.module('$curry', [], function (_) {
+this.Ninja.module('$curry', [], function (_) {
   
   /**
    * Cria uma funcao que ao ser executadao retorna o proximo item de uma array
