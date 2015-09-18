@@ -50,7 +50,7 @@ this.Ninja.module('$curry', [], function (_) {
    * 
    */
   function mapper(template, next) {
-    return template.map(function (a) { return a || next(); });
+    return template.map(function (a) { return a != _ ? a : next(); });
   }
   
   /**
